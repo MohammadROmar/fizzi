@@ -1,7 +1,26 @@
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
 import Button from '../ui/button';
 import TextSplitter from './text-splitter';
 
 export default function UpperHeroSection() {
+  useGSAP(() => {
+    const introTl = gsap.timeline();
+
+    introTl
+      .from('.hero-header-word', {
+        scale: 3,
+        opacity: 0,
+        ease: 'power4.in',
+        delay: 0.25,
+        stagger: 1,
+      })
+      .from('.hero-subheading', { opacity: 0, y: 30 }, '+=0.8')
+      .from('.hero-body', { opacity: 0, y: 10 })
+      .from('.hero-button', { opacity: 0, y: 10, duration: 0.6 });
+  });
+
   return (
     <div className="grid h-screen place-items-center">
       <div className="grid auto-rows-min place-items-center text-center">

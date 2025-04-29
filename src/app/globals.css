@@ -15,3 +15,7 @@
     }
   }
 }
+
+@utility bounded {
+  @apply mx-auto flex w-full max-w-7xl flex-col items-center px-4 first:pt-10 md:px-6;
+}

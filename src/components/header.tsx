@@ -1,4 +1,4 @@
-import { FizziLogo } from './logo';
+import FizziLogo from './logo';
 
 export default function Header() {
   return (

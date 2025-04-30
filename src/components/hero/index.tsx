@@ -4,15 +4,19 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { View } from '@react-three/drei';
 
 import UpperHeroSection from './upper';
 import TextSplitter from './text-splitter';
 import allCansImg from '@/assets/images/all-cans-bunched.png';
+import Scene from './scene';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Hero() {
   useGSAP(() => {
+    gsap.to('.hero', { opacity: 1 });
+
     const scrollTl = gsap.timeline({
       scrollTrigger: {
         trigger: '.hero',
@@ -25,7 +29,7 @@ export default function Hero() {
     scrollTl
       .fromTo(
         'body',
-        { backgroundColor: '#fde047' },
+        { backgroundColor: '#ffdf20' },
         { backgroundColor: '#d9f99d', overwrite: 'auto' },
         1,
       )
@@ -37,11 +41,15 @@ export default function Hero() {
         ease: 'back.out(3)',
         duration: 0.5,
       })
-      .from('.text-slide-body', { y: 20, opacity: 0 });
+      .from('.text-side-body', { y: 20, opacity: 0 });
   });
 
   return (
-    <section className="hero bounded">
+    <section className="hero bounded opacity-0">
+      <View className="hero-scene pointer-events-none sticky top-0 z-40 -mt-[100vh] hidden h-screen w-screen md:block">
+        <Scene />
+      </View>
+
       <div className="grid">
         <UpperHeroSection />
 

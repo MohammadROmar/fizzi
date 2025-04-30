@@ -4,6 +4,8 @@ import { useGSAP } from '@gsap/react';
 import Button from '../ui/button';
 import TextSplitter from './text-splitter';
 
+gsap.registerPlugin(useGSAP);
+
 export default function UpperHeroSection() {
   useGSAP(() => {
     const introTl = gsap.timeline();

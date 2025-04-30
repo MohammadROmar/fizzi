@@ -4,6 +4,7 @@ import type { PropsWithChildren } from 'react';
 
 import Header from '@/components/header';
 import './globals.css';
+import SodaCanvas from '@/components/canvas';
 
 const alpinoFont = localFont({
   src: '../assets/fonts/Alpino-Variable.woff2',
@@ -26,7 +27,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
         className={`${alpinoFont.variable} font-alpino overflow-x-hidden bg-yellow-300 antialiased`}
       >
         <Header />
-        <main>{children}</main>
+        <main>
+          {children}
+          <SodaCanvas />
+        </main>
         <footer></footer>
       </body>
     </html>

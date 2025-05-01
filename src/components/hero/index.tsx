@@ -10,6 +10,7 @@ import UpperHeroSection from './upper';
 import TextSplitter from './text-splitter';
 import allCansImg from '@/assets/images/all-cans-bunched.png';
 import Scene from './scene';
+import Bubbles from './bubbles';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -48,6 +49,7 @@ export default function Hero() {
     <section className="hero bounded opacity-0">
       <View className="hero-scene pointer-events-none sticky top-0 z-40 -mt-[100vh] hidden h-screen w-screen md:block">
         <Scene />
+        <Bubbles />
       </View>
 
       <div className="grid">

@@ -1,8 +1,14 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Preload, View } from '@react-three/drei';
+import { View } from '@react-three/drei';
+
+const Loader = dynamic(
+  () => import('@react-three/drei').then((module) => module.Loader),
+  { ssr: false },
+);
 
 export default function SodaCanvas() {
   return (
@@ -13,12 +19,13 @@ export default function SodaCanvas() {
         gl={{ antialias: true }}
         camera={{ fov: 30 }}
       >
-        <Preload all />
+        {/* <Preload all /> */}
 
         <Suspense fallback={null}>
           <View.Port />
         </Suspense>
       </Canvas>
+      <Loader />
     </div>
   );
 }

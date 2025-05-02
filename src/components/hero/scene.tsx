@@ -8,12 +8,15 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import FloatingCan from '../floating-can';
+import { useModelsLoadStateContext } from '@/store/hooks';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const FLOAT_SPEED = 1.5;
 
 export default function Scene() {
+  const { setLoaded } = useModelsLoadStateContext();
+
   const can1Ref = useRef<Group>(null);
   const can2Ref = useRef<Group>(null);
   const can3Ref = useRef<Group>(null);
@@ -35,9 +38,10 @@ export default function Scene() {
       !can1GroupRef.current ||
       !can2GroupRef.current ||
       !groupRef.current
-    ) {
+    )
       return;
-    }
+
+    setLoaded(true);
 
     const introTl = gsap.timeline({
       defaults: {

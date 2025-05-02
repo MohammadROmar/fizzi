@@ -11,11 +11,18 @@ import TextSplitter from './text-splitter';
 import allCansImg from '@/assets/images/all-cans-bunched.png';
 import Scene from './scene';
 import Bubbles from './bubbles';
+import { useModelsLoadStateContext } from '@/store/hooks';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function Hero() {
+  const { loaded } = useModelsLoadStateContext();
+  const isDesktop = useMediaQuery('(min-width: 768px)');
+
   useGSAP(() => {
+    if (!loaded && isDesktop) return;
+
     gsap.to('.hero', { opacity: 1 });
 
     const scrollTl = gsap.timeline({
@@ -43,14 +50,16 @@ export default function Hero() {
         duration: 0.5,
       })
       .from('.text-side-body', { y: 20, opacity: 0 });
-  });
+  }, [loaded, isDesktop]);
 
   return (
     <section className="hero bounded opacity-0">
-      <View className="hero-scene pointer-events-none sticky top-0 z-40 -mt-[100vh] hidden h-screen w-screen md:block">
-        <Scene />
-        <Bubbles />
-      </View>
+      {isDesktop && (
+        <View className="hero-scene pointer-events-none sticky top-0 z-40 -mt-[100vh] hidden h-screen w-screen md:block">
+          <Scene />
+          <Bubbles />
+        </View>
+      )}
 
       <div className="grid">
         <UpperHeroSection />

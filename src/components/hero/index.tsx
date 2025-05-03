@@ -21,7 +21,7 @@ export default function Hero() {
   const isDesktop = useMediaQuery('(min-width: 768px)');
 
   useGSAP(() => {
-    if (!loaded && isDesktop) return;
+    if (!loaded) return;
 
     gsap.to('.hero', { opacity: 1 });
 

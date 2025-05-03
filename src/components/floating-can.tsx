@@ -35,6 +35,7 @@ const FloatingCan = forwardRef<Group, FloatingCanProps>(
           rotationIntensity={rotationIntensity}
           floatingRange={floatingRange}
         >
+          {children}
           <SodaCan flavor={flavor} />
         </Float>
       </group>

@@ -3,6 +3,7 @@ import Hero from '@/components/hero';
 import SodaCanvas from '@/components/canvas';
 import SkyDive from '@/components/sky-dive';
 import Carousel from '@/components/carousel';
+import AlternatingText from '@/components/alternating-text';
 
 export default function HomePage() {
   return (
@@ -11,10 +12,9 @@ export default function HomePage() {
         <Hero />
         <SodaCanvas />
       </ModelsLoadStateContextProvider>
-
       <SkyDive />
-
       <Carousel />
+      <AlternatingText />
     </>
   );
 }
